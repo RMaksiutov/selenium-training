@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'rf.training'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.junit.platform:junit-platform-suite:1.8.1'
+    compile 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    compile 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    compile 'org.seleniumhq.selenium:selenium-java:4.8.3'
+}
+
+test {
+    useJUnitPlatform()
+}
