@@ -2,12 +2,15 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Beta;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.naming.ldap.LdapReferralException;
 import java.time.Duration;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class MyFirstTask {
 
@@ -21,8 +24,13 @@ public class MyFirstTask {
     }
 
     @Test
-    public void myFirstTask() {
-        driver.get("http://www.google.com/");
+    public void loginAdmin() {
+        driver.get("http://localhost/litecart/admin/");
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
+        wait.until(titleIs("My Store"));
+        System.out.println("Success!");
     }
 
     @AfterAll
