@@ -20,7 +20,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 public class MyFirstTask {
 
     protected static WebDriver driver;
-    private static WebDriverWait wait;
+    protected static WebDriverWait wait;
 
     @BeforeAll
     public static void start() {

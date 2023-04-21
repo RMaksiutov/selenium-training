@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class MySecondTask extends MyFirstTask{
     private final String subMenuXPath = "//li[@class='selected']/ul/li";
@@ -28,7 +29,20 @@ public class MySecondTask extends MyFirstTask{
                 }
             }
         }
+    }
 
+    @Test
+    public void stickersCheck() {
+        driver.navigate().to("http://localhost/litecart/en/");
+        wait.until(titleIs("Online Store | My Store"));
+        List<WebElement> ducks = driver.findElements(By.xpath("//li[@class='product column shadow hover-light']"));
+        System.out.println("Ducks found: " + ducks.size());
+        for (WebElement duck : ducks) {
+            int stickers = 0;
+            stickers += duck.findElements(By.xpath(".//div[@class='sticker new']")).size();
+            stickers += duck.findElements(By.xpath(".//div[@class='sticker sale']")).size();
+            assertTrue(stickers==1, "Sticker check failed. Stickers found: " + stickers);
+        }
     }
 
 }
