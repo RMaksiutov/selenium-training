@@ -39,10 +39,9 @@ public class MySecondTask extends MyFirstTask{
         List<WebElement> ducks = driver.findElements(By.cssSelector("li[class*=\"product\"]"));
         System.out.println("Ducks found: " + ducks.size());
         for (WebElement duck : ducks) {
-            int stickers = 0;
             //stickers += duck.findElements(By.xpath(".//div[@class='sticker new']")).size();
             //stickers += duck.findElements(By.xpath(".//div[@class='sticker sale']")).size();
-            stickers += duck.findElements(By.cssSelector("div[class*=\"sticker\"]")).size();
+            int stickers = duck.findElements(By.cssSelector(".sticker")).size();
             if (stickers == 1)
                 System.out.println("Sticker found: " + duck.findElement(By.cssSelector("div[class*=\"sticker\"]")).getAttribute("className"));
             assertTrue(stickers==1, "Sticker check failed. Stickers found: " + stickers);
