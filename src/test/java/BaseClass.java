@@ -42,7 +42,6 @@ public class BaseClass {
         for (WebElement c : wEList) {
             String name = "";
             name = c.getText();
-            if ("".equals(name)) name = c.getAttribute("value");
             //if ("Anguilla".equals(country)) country = "Angilla"; // для проверки работы checkAlphabetOrder
             stringNames.add(name);
         }

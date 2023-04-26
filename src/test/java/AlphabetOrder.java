@@ -2,7 +2,6 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,7 +32,7 @@ public class AlphabetOrder {
     static String urlGeoZones = "http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones";
     static String xPathCountryNames = "//table[@class]//tr/td[not(@style)]/a";
     static String xPathCountryRows = "//tr[@class='row']";
-    static String xPathCountryGeoZonesRows = "//table[@id='table-zones']//input[contains(@name, 'name') and @type='hidden']";
+    static String xPathCountryGeoZones = "//table[@id='table-zones']//tr/td[3]";
     static String xPathGeoZoneContries = "//tr[@class='row']//a[not(@title)]";
     static String xPathGeoZones = "//option[@selected='selected' and not(@data-phone-code)]";
 
@@ -75,7 +74,10 @@ public class AlphabetOrder {
         }
         for (String link : linksWithGeoZones) {
             driver.navigate().to(link);
-            List<WebElement> wECountryGeoZoneNames = driver.findElements(By.xpath(xPathCountryGeoZonesRows));
+            List<WebElement> wECountryGeoZoneNames = driver.findElements(By.xpath(xPathCountryGeoZones));
+            int size = wECountryGeoZoneNames.size();
+            if (wECountryGeoZoneNames.get(size-1).findElements(By.xpath(".//input[@type='text']")).size() > 0)
+                wECountryGeoZoneNames.remove(size-1);
             ArrayList<String> countryGeoZoneNames = BaseClass.getStringNames(wECountryGeoZoneNames);
             assertTrue(BaseClass.checkAlphabetOrder(countryGeoZoneNames), "Alphabet order check failed!");
         }
