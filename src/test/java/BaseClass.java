@@ -12,6 +12,7 @@ import java.io.File;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
@@ -58,6 +59,12 @@ public class BaseClass {
                 }
             }
         return true;
+    }
+
+    public static int getRandomNumber(int length) {
+        if (length > 0) return new Random().nextInt(length);
+        if (length == 0) return (int) System.currentTimeMillis();
+        return 0;
     }
 
 }
