@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,7 +27,8 @@ public class UserRegistration {
 
     @BeforeAll
     public static void start() {
-        driver = BaseClass.createDriver("chrome");
+        //driver = BaseClass.createDriver("chrome");
+        driver = BaseClass.createDriver("ff");
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
@@ -87,7 +89,10 @@ public class UserRegistration {
     }
 
     private void selectCountry(WebDriver d) {
-        d.findElement(By.cssSelector(".selection")).click();
+        //d.findElement(By.cssSelector(".selection")).click();
+        //d.findElement(By.cssSelector("span[class=\"selection\"]")).click();
+        WebElement e = d.findElement(By.cssSelector("span[role=\"presentation\"]"));
+        e.click();
         d.findElement(By.cssSelector("input[type=\"search\"]")).sendKeys("United States");
         d.findElement(By.cssSelector("input[type=\"search\"]")).sendKeys(Keys.RETURN);
     }
