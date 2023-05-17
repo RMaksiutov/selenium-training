@@ -12,6 +12,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class BrowserLogTest {
     static WebDriver driver;
     static WebDriverWait wait;
@@ -73,6 +75,7 @@ public class BrowserLogTest {
         if (newLogEntries.size() > currentLogEntries.size()) {
             for (int i = 0; i < newLogEntries.size(); i++) {
                 if (i >= currentLogEntries.size()) System.out.println("New log entry: " + newLogEntries.get(i));
+                assertTrue(false);
             }
             currentLogEntries = newLogEntries;
         }
