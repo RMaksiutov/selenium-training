@@ -49,6 +49,16 @@ public class BaseClass {
         return stringNames;
     }
 
+    public static ArrayList<String> getHRefs(List<WebElement> wEList) {
+        ArrayList<String> stringNames = new ArrayList<String>();
+        for (WebElement c : wEList) {
+            String name = "";
+            name = c.getAttribute("href");
+            stringNames.add(name);
+        }
+        return stringNames;
+    }
+
     public static boolean checkAlphabetOrder(ArrayList<String> strings) {
         for (int i = 0; i < strings.size() - 1; i++) {
             if (strings.get(i).compareTo(strings.get(i + 1)) >= 0) {
