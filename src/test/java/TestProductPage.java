@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ProductPage {
+public class TestProductPage {
 
 
     static WebDriver driver;
